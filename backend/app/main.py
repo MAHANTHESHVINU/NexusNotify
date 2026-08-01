@@ -2,13 +2,16 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config.settings import settings
+from app.api.v1.router import router
 
+# Create the FastAPI application FIRST
 app = FastAPI(
     title=settings.APP_NAME,
-    version=settings.APP_VERSION,
     description="AI-Powered Personalized Notification Intelligence",
+    version=settings.APP_VERSION,
 )
 
+# Configure middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -16,6 +19,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Register all API routes
+app.include_router(router)
+
 
 @app.get("/")
 async def root():
@@ -26,8 +33,10 @@ async def root():
         "model": settings.LLM_MODEL,
     }
 
+
 @app.get("/health")
 async def health():
     return {
-        "status": "healthy"
+        "status": "healthy",
+        "service": "backend",
     }
