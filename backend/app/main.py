@@ -1,23 +1,33 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from app.config.settings import settings
 
 app = FastAPI(
-    title="NexusNotify API",
-    description="AI-Powered Notification Routing System",
-    version="1.0.0"
+    title=settings.APP_NAME,
+    version=settings.APP_VERSION,
+    description="AI-Powered Personalized Notification Intelligence",
 )
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
-def root():
+async def root():
     return {
-        "status": "running",
-        "project": "NexusNotify",
-        "version": "1.0.0"
+        "project": settings.APP_NAME,
+        "version": settings.APP_VERSION,
+        "environment": settings.ENVIRONMENT,
+        "model": settings.LLM_MODEL,
     }
 
-
 @app.get("/health")
-def health():
+async def health():
     return {
         "status": "healthy"
     }
