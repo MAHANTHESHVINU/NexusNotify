@@ -40,3 +40,7 @@ async def health():
         "status": "healthy",
         "service": "backend",
     }
+print("\n========== REGISTERED ROUTES ==========")
+for route in app.routes:
+    print(route.path)
+print("=======================================\n")
