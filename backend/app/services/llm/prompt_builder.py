@@ -12,7 +12,26 @@ class PromptBuilder:
         context: NotificationContext,
         features: DecisionFeatures,
         current_prediction: dict,
+        evidence: list[dict],
     ) -> str:
+
+        evidence_text = ""
+
+        if evidence:
+            for item in evidence:
+                evidence_text += f"""
+Message ID: {item["message_id"]}
+
+Message:
+{item["message"]}
+
+Similarity Score:
+{item["score"]}
+
+------------------------
+"""
+        else:
+            evidence_text = "No similar notifications found."
 
         return f"""
 You are an AI Notification Intelligence System.
@@ -27,7 +46,8 @@ MESSAGE
 ========================
 USER PROFILE
 ========================
-User ID: {context.user.user_id}
+User ID:
+{context.user.user_id}
 
 Engagement Score:
 {context.user.engagement_score:.2f}
@@ -69,13 +89,31 @@ Reason:
 {current_prediction["reason"]}
 
 ========================
+SIMILAR NOTIFICATIONS
+========================
 
-Return ONLY valid JSON.
+{evidence_text}
+
+========================
+
+Return ONLY raw JSON.
+
+Do NOT include:
+- markdown
+- ```json
+- explanations
+- notes
+- comments
+
+The first character of your response must be '{{'
+The last character must be '}}'
+
+Return this format exactly:
 
 {{
-    "action":"...",
-    "message_type":"...",
-    "confidence":0.95,
-    "reason":"..."
+    "action": "...",
+    "message_type": "...",
+    "confidence": 0.95,
+    "reason": "..."
 }}
 """

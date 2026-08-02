@@ -1,4 +1,5 @@
 import json
+import re
 
 
 class ResponseParser:
@@ -14,8 +15,17 @@ class ResponseParser:
     }
 
     def parse(self, response: str) -> dict:
+
+        response = response.strip()
+
+        # Remove Markdown code fences if present
+        response = re.sub(r"^```json\s*", "", response, flags=re.IGNORECASE)
+        response = re.sub(r"^```\s*", "", response)
+        response = re.sub(r"\s*```$", "", response)
+
         try:
             data = json.loads(response)
+
         except json.JSONDecodeError as exc:
             raise ValueError(
                 f"Invalid JSON returned by LLM:\n{response}"

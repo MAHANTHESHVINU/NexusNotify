@@ -12,6 +12,8 @@ class Settings(BaseSettings):
     DATABASE_URL: str
 
     OLLAMA_HOST: str
+    LLM_PROVIDER: str
+    GROQ_API_KEY: str
     LLM_MODEL: str
     EMBEDDING_MODEL: str
 

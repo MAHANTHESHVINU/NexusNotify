@@ -12,7 +12,7 @@ class EvidenceRetriever:
         self,
         context: NotificationContext,
         limit: int = 3,
-    ) -> list[str]:
+    ) -> list[dict]:
 
         current = (
             context.message.message_text or ""
@@ -42,19 +42,18 @@ class EvidenceRetriever:
             )
 
             if overlap > 3:
+
                 scores.append(
-                    (
-                        row["message_id"],
-                        overlap,
-                    )
+                    {
+                        "message_id": row["message_id"],
+                        "message": row["message_text"],
+                        "score": overlap,
+                    }
                 )
 
         scores.sort(
-            key=lambda x: x[1],
+            key=lambda x: x["score"],
             reverse=True,
         )
 
-        return [
-            x[0]
-            for x in scores[:limit]
-        ]
+        return scores[:limit]
