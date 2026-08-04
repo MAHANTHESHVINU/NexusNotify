@@ -11,7 +11,7 @@ class Settings(BaseSettings):
 
     DATABASE_URL: str
 
-    OLLAMA_HOST: str
+    OLLAMA_HOST: str | None = None
     LLM_PROVIDER: str
     GROQ_API_KEY: str
     LLM_MODEL: str
