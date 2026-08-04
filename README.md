@@ -1,130 +1,263 @@
-# 🤖 NexusNotify – AI-Powered Notification Intelligence System
+# 🤖 NexusNotify
 
-> NexusNotify is an AI-powered notification intelligence platform that classifies, prioritizes, and explains notifications using Machine Learning, Semantic Retrieval, and Large Language Models (LLMs). It helps reduce notification fatigue by intelligently identifying phishing, transactional, promotional, and important notifications.
+<div align="center">
+
+### 🧠 AI-Powered Personalized Notification Intelligence System
+
+*Classify • Prioritize • Explain • Protect*
+
+![Python](https://img.shields.io/badge/Python-3.12+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Groq](https://img.shields.io/badge/Groq-LLM-black?style=for-the-badge)
+![Vercel](https://img.shields.io/badge/Vercel-Deployed-black?style=for-the-badge&logo=vercel)
+![Render](https://img.shields.io/badge/Render-Backend-46E3B7?style=for-the-badge&logo=render)
+
+</div>
 
 ---
 
-## 🚀 Problem Statement
+## 🌍 Live Demo
 
-Modern users receive hundreds of notifications every day, making it difficult to identify important messages while filtering spam, phishing attempts, and promotional content.
+| Service | URL |
+|----------|-----|
+| 🚀 Frontend | **https://nexus-notify-delta.vercel.app/** |
+| ⚡ Backend API | **https://nexusnotify.onrender.com** |
+| 📚 Swagger Docs | **https://nexusnotify.onrender.com/docs** |
 
-NexusNotify addresses this challenge by using AI to:
+---
 
-- Detect phishing notifications
-- Prioritize important messages
-- Reduce notification fatigue
-- Explain every AI decision with supporting evidence
+# 📖 Overview
+
+NexusNotify is an AI-powered notification intelligence platform that analyzes incoming notifications, predicts their importance, detects phishing attempts, and provides explainable AI decisions with supporting evidence.
+
+The system combines:
+
+- 🤖 Large Language Models (Groq Llama 3.3)
+- 🧠 Rule-Based Decision Engine
+- 🔍 Semantic Retrieval
+- 📊 Interactive Analytics Dashboard
+- 📚 Explainable AI
+
+to reduce notification fatigue while ensuring important messages are never missed.
 
 ---
 
 # ✨ Features
 
-- 🔐 AI-powered Notification Classification
-- 🧠 LLM-based Reasoning (Groq)
-- 🔍 Semantic Similarity Retrieval
-- 📊 Interactive Analytics Dashboard
-- 📈 Evaluation Metrics (Accuracy, Precision, Recall, F1)
-- ⚡ FastAPI REST Backend
-- ⚛ React + TypeScript Frontend
-- 📚 Explainable AI (Evidence Retrieval)
-- 🔎 Search & Filter Notifications
-- 📈 Confidence Analysis Charts
+✅ AI Notification Classification
+
+✅ Phishing Detection
+
+✅ Personalized Notification Prioritization
+
+✅ Groq LLM Reasoning Engine
+
+✅ Explainable AI with Evidence Retrieval
+
+✅ Analytics Dashboard
+
+✅ Search & Filter Notifications
+
+✅ REST APIs with Swagger Documentation
+
+✅ Production Deployment
 
 ---
 
-# 🏗 System Architecture
+# 🏗 Architecture
 
-```
-                Notification Dataset
-                        │
-                        ▼
-              Context Builder Pipeline
-                        │
-                        ▼
-              Feature Extraction Engine
-                        │
-                        ▼
-             Rule-Based Decision Engine
-                        │
-                        ▼
-           Semantic Evidence Retrieval
-                        │
-                        ▼
-             Groq LLM Reasoning Engine
-                        │
-                        ▼
-                Prediction Generator
-                        │
-                        ▼
-               FastAPI REST Services
-                        │
-                        ▼
-          React Analytics Dashboard
+```text
+                  📱 Notification Dataset
+                            │
+                            ▼
+               🧩 Context Builder Pipeline
+                            │
+                            ▼
+                ⚙ Feature Extraction Engine
+                            │
+                            ▼
+              🧠 Rule-Based Decision Engine
+                            │
+                            ▼
+          🔍 Semantic Evidence Retrieval
+                            │
+                            ▼
+              🤖 Groq LLM Reasoning Engine
+                            │
+                            ▼
+                📄 Prediction Generator
+                            │
+                            ▼
+                 ⚡ FastAPI REST API
+                            │
+                            ▼
+         ⚛ React + TypeScript Dashboard
 ```
 
 ---
 
 # 🛠 Tech Stack
 
-## Frontend
+## 💻 Frontend
 
-- React
-- TypeScript
-- Vite
+- ⚛ React
+- 🔷 TypeScript
+- ⚡ Vite
 - Axios
 - Recharts
 
-## Backend
+## ⚙ Backend
 
-- FastAPI
-- Python 3.13
+- 🐍 Python
+- ⚡ FastAPI
 - Pandas
+- NumPy
 - Scikit-learn
-- Sentence Transformers
+- Pydantic
+- SQLAlchemy
 
-## AI / ML
+## 🤖 AI & Machine Learning
 
-- Groq LLM
+- Groq Llama 3.3 70B
 - Semantic Embeddings
 - Cosine Similarity
-- Explainable AI
 - Rule-Based Decision Engine
+- Explainable AI
+
+---
+
+# 📊 Dashboard
+
+The analytics dashboard provides:
+
+- 📈 Accuracy
+- 🎯 Precision
+- 📊 Recall
+- 🏆 F1 Score
+- 📩 Notification Predictions
+- 🤖 AI Decision Panel
+- 🔎 Search & Filtering
+- 📚 Evidence Retrieval
+- 📉 Confidence Distribution
+- 📊 Notification Type Analytics
+
+---
+
+# 📈 AI Workflow
+
+```text
+Notification
+
+      │
+
+      ▼
+
+Context Builder
+
+      │
+
+      ▼
+
+Feature Extraction
+
+      │
+
+      ▼
+
+Rule-Based Prediction
+
+      │
+
+      ▼
+
+Semantic Retrieval
+
+      │
+
+      ▼
+
+Groq LLM
+
+      │
+
+      ▼
+
+Final Prediction
+
+      │
+
+      ▼
+
+Dashboard Visualization
+```
+
+---
+
+# 📡 REST API
+
+| Endpoint | Description |
+|------------|-------------|
+| `/messages/` | List notifications |
+| `/prediction/{message_id}` | Predict notification |
+| `/predictions/` | All predictions |
+| `/metrics/` | Evaluation metrics |
+| `/features/{message_id}` | Feature extraction |
+| `/context/{message_id}` | Notification context |
+| `/debug/message/{message_id}` | Debug endpoint |
+| `/health` | Health check |
+
+Swagger Documentation:
+
+```
+https://nexusnotify.onrender.com/docs
+```
 
 ---
 
 # 📂 Project Structure
 
-```
+```text
 NexusNotify
 │
 ├── backend/
 │   ├── app/
-│   ├── pipelines/
-│   ├── services/
-│   ├── repositories/
-│   └── api/
+│   │   ├── api/
+│   │   ├── config/
+│   │   ├── evaluation/
+│   │   ├── repositories/
+│   │   ├── services/
+│   │   ├── pipelines/
+│   │   └── models/
+│   │
+│   ├── datasets/
+│   └── requirements.txt
 │
 ├── frontend/
 │   ├── src/
-│   ├── components/
-│   ├── hooks/
-│   ├── pages/
-│   └── api/
+│   │   ├── api/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── pages/
+│   │   └── types/
+│   │
+│   └── package.json
 │
-├── docs/
-├── scripts/
 ├── output.csv
 └── README.md
 ```
 
 ---
 
-# ⚙ Installation
+# ⚙ Local Installation
 
 ## Clone Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/YOUR_USERNAME/NexusNotify.git
+
 cd NexusNotify
 ```
 
@@ -139,7 +272,7 @@ python -m venv .venv
 
 .venv\Scripts\activate
 
-pip install -r requirement.txt
+pip install -r requirements.txt
 
 uvicorn app.main:app --reload
 ```
@@ -150,7 +283,7 @@ Backend:
 http://127.0.0.1:8000
 ```
 
-Swagger API:
+Swagger:
 
 ```
 http://127.0.0.1:8000/docs
@@ -176,114 +309,71 @@ http://localhost:5173
 
 ---
 
-# 📊 AI Workflow
+# 📊 Model Evaluation
 
-```
-Notification
+Current Evaluation Metrics
 
-      │
-
-      ▼
-
-Context Building
-
-      │
-
-      ▼
-
-Feature Extraction
-
-      │
-
-      ▼
-
-Rule-Based Prediction
-
-      │
-
-      ▼
-
-Semantic Retrieval
-
-      │
-
-      ▼
-
-Groq LLM Reasoning
-
-      │
-
-      ▼
-
-Final Prediction
-
-      │
-
-      ▼
-
-Analytics Dashboard
-```
+| Metric | Score |
+|---------|------:|
+| Accuracy | **100%** |
+| Precision | **100%** |
+| Recall | **100%** |
+| F1 Score | **100%** |
 
 ---
 
-# 📈 Dashboard Features
 
-- Live Notification Predictions
-- AI Decision Panel
-- Confidence Scores
-- Notification Type Distribution
-- Analytics Charts
-- Search Notifications
-- Explainable AI Evidence
+# 🚀 Deployment
 
----
+## Frontend
 
-# 🔬 Evaluation Metrics
+▲ Vercel
 
-The system evaluates predictions using:
+## Backend
 
-- Accuracy
-- Precision
-- Recall
-- F1 Score
+⚡ Render
 
----
+## API Documentation
 
-# 📸 Screenshots
-
-Add screenshots here before submission.
-
-- Dashboard
-- AI Decision Panel
-- Notification Analytics
-- Search & Filter
-- Evidence Panel
+FastAPI Swagger UI
 
 ---
 
 # 🔮 Future Enhancements
 
-- Android Notification Integration
-- Real-time Notification Monitoring
-- Browser Extension
-- Personalized User Learning
-- Cloud Deployment
-- Authentication & User Roles
-- PostgreSQL Database
-- Docker & Kubernetes Deployment
+- 📱 Android Notification Integration
+- 🔔 Real-Time Notification Monitoring
+- ☁ PostgreSQL Database
+- 👥 Multi-User Support
+- 🔐 Authentication & Authorization
+- 📈 Personalized Learning
+- 🐳 Docker Deployment
+- ☸ Kubernetes Support
+- 📊 Advanced Analytics
 
 ---
 
-# 👨‍💻 Team
+# 👨‍💻 Author
 
-Hackathon Project
+**Vinumahanthesh G**
 
-**Project Name:** NexusNotify
+AI & Machine Learning Engineer
 
-AI-Powered Personalized Notification Intelligence System
+- 💼 LinkedIn: *https://www.linkedin.com/in/mahantheshvinu*
+- 🐙 GitHub: *https://github.com/MAHANTHESHVINU*
 
 ---
 
 # 📄 License
 
-This project is developed for educational and hackathon purposes.
+This project was developed for educational and hackathon purposes.
+
+---
+
+<div align="center">
+
+### ⭐ If you found this project useful, consider giving it a star!
+
+**Built with ❤️ using FastAPI, React, TypeScript & AI**
+
+</div>
