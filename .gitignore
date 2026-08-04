@@ -23,6 +23,3 @@ backend/.env
 .DS_Store
 Thumbs.db
 
-# Output files
-output.csv
-outputs/
