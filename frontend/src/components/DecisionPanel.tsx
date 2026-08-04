@@ -1,4 +1,3 @@
-import { usePrediction } from "../hooks/usePrediction";
 import type { Prediction } from "../types/prediction";
 import EvidenceList from "./EvidenceList";
 
@@ -10,13 +9,6 @@ export default function DecisionPanel({
     prediction,
 }: Props) {
 
-    const {
-        prediction: details,
-        loading,
-    } = usePrediction(
-        prediction?.message_id ?? null
-    );
-
     return (
         <div
             style={{
@@ -26,50 +18,44 @@ export default function DecisionPanel({
                 boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
             }}
         >
-            <h2>AI Decision</h2>
+            <h2>🤖 AI Decision</h2>
 
-            {!prediction && (
+            {!prediction ? (
                 <p>Select a notification.</p>
-            )}
-
-            {loading && (
-                <p>Loading prediction...</p>
-            )}
-
-            {details && (
+            ) : (
                 <>
                     <p>
                         <strong>Message ID</strong>
                         <br />
-                        {details.message_id}
+                        {prediction.message_id}
                     </p>
 
                     <p>
                         <strong>Action</strong>
                         <br />
-                        {details.action}
+                        {prediction.action}
                     </p>
 
                     <p>
                         <strong>Message Type</strong>
                         <br />
-                        {details.message_type}
+                        {prediction.message_type}
                     </p>
 
                     <p>
                         <strong>Confidence</strong>
                         <br />
-                        {(details.confidence * 100).toFixed(2)}%
+                        {(prediction.confidence * 100).toFixed(2)}%
                     </p>
 
                     <p>
                         <strong>Reason</strong>
                         <br />
-                        {details.reason}
+                        {prediction.reason}
                     </p>
 
                     <EvidenceList
-                        evidence={details.evidence_message_ids}
+                        evidence={prediction.evidence_message_ids}
                     />
                 </>
             )}

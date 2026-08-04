@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { api } from "../api/api";
-import type { Prediction } from "../types/prediction";
+import type { Predictions } from "../types/predictions";
 
 export function usePredictions() {
 
-    const [predictions, setPredictions] = useState<Prediction[]>([]);
+    const [predictions, setPredictions] = useState<Predictions[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {

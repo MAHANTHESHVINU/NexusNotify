@@ -7,7 +7,7 @@ import DecisionPanel from "../components/DecisionPanel";
 import AnalyticsCharts from "../components/AnalyticsCharts";
 
 import { useMetrics } from "../hooks/useMetrics";
-import { usePredictions } from "../hooks/usePrediction";
+import { usePredictions } from "../hooks/usePredictions";
 
 import type { Prediction } from "../types/prediction";
 
