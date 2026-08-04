@@ -43,23 +43,54 @@ class DecisionEngine:
             )
 
         if features.risk_score >= 0.80:
+            reasons.append(
+                "High risk score indicates scam or spam"
+            )
 
             return Decision(
-                action="SUPPRESS",
+                action="mute",
                 confidence=0.95,
                 reason=reasons,
             )
 
         if features.risk_score >= 0.50:
+            reasons.append(
+                "Moderate risk score suggests lower priority"
+            )
 
             return Decision(
-                action="SUMMARIZE",
+                action="digest",
                 confidence=0.80,
                 reason=reasons,
             )
 
+        if features.contains_otp_request or features.contains_credential_request:
+            reasons.append(
+                "Sensitive security-related content"
+            )
+
+            return Decision(
+                action="notify",
+                confidence=0.88,
+                reason=reasons,
+            )
+
+        if features.contains_urgency:
+            return Decision(
+                action="notify",
+                confidence=0.85,
+                reason=reasons,
+            )
+
+        if features.notification_fatigue > 0.50:
+            return Decision(
+                action="digest",
+                confidence=0.72,
+                reason=reasons,
+            )
+
         return Decision(
-            action="NOTIFY",
-            confidence=0.70,
-            reason=reasons,
+            action="notify",
+            confidence=0.75,
+            reason=reasons or ["Standard relevance prediction"],
         )

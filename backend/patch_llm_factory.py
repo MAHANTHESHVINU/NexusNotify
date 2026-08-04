@@ -1,4 +1,8 @@
-from app.config.settings import settings
+from pathlib import Path
+
+base_dir = Path(__file__).resolve().parent
+
+content = '''from app.config.settings import settings
 from app.services.llm.ollama_client import OllamaClient
 
 
@@ -29,3 +33,7 @@ class LLMFactory:
         raise ValueError(
             f"Unsupported LLM provider: {provider}"
         )
+'''
+
+(base_dir / 'app' / 'services' / 'llm' / 'llm_factory.py').write_text(content, encoding='utf-8')
+print('patched llm_factory')

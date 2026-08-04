@@ -16,8 +16,10 @@ class CSVExporter:
                     "message_type": p.message_type,
                     "reason": p.reason,
                     "confidence": p.confidence,
-                    "evidence_message_ids": ",".join(
-                        p.evidence_message_ids
+                    "evidence_message_ids": (
+                        ";".join(p.evidence_message_ids)
+                        if p.evidence_message_ids
+                        else "none"
                     ),
                 }
             )

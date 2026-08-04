@@ -61,6 +61,7 @@ class PredictionPipeline:
                         context=context,
                         features=features,
                         prediction=prediction_data,
+                        evidence=evidence,
                     )
 
                 except Exception as e:

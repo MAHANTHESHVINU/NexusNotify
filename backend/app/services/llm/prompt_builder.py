@@ -82,6 +82,9 @@ Action:
 Message Type:
 {current_prediction["message_type"]}
 
+Allowed Message Types:
+personal, urgent, event, payment, business_update, promotion, greeting, forward, spam, scam, unknown
+
 Confidence:
 {current_prediction["confidence"]}
 

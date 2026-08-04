@@ -26,6 +26,6 @@ class ContextBuilder:
         return NotificationContext(
             message=message,
             user=user,
-            history=[],
+            history=history,
             events=events,
         )

@@ -3,13 +3,25 @@ from app.models.notification_context import NotificationContext
 
 class MessageClassifier:
 
-    PHISHING_WORDS = {
-        "otp",
-        "verification code",
-        "login code",
+    SPAM_WORDS = {
+        "spam",
+        "junk",
+        "unsubscribe",
+        "click here",
+        "limited offer",
+        "free gift",
+    }
+
+    SCAM_WORDS = {
+        "winner",
+        "lottery",
+        "prize",
+        "account blocked",
+        "bank transfer",
+        "verify account",
+        "urgent payment",
         "password",
-        "pin",
-        "verify",
+        "otp",
     }
 
     PROMOTION_WORDS = {
@@ -19,23 +31,51 @@ class MessageClassifier:
         "coupon",
         "cashback",
         "limited time",
+        "deal",
     }
 
-    TRANSACTION_WORDS = {
+    PAYMENT_WORDS = {
         "credited",
         "debited",
         "transaction",
         "payment",
         "upi",
         "bank",
+        "invoice",
+        "due",
+        "paid",
+        "amount",
     }
 
-    REMINDER_WORDS = {
-        "reminder",
+    EVENT_WORDS = {
         "meeting",
         "schedule",
         "appointment",
+        "event",
+        "party",
+        "conference",
         "tomorrow",
+        "today",
+        "tonight",
+    }
+
+    GREETING_WORDS = {
+        "hello",
+        "hi",
+        "hey",
+        "good morning",
+        "good afternoon",
+        "good evening",
+        "happy birthday",
+    }
+
+    URGENT_WORDS = {
+        "urgent",
+        "asap",
+        "immediately",
+        "important",
+        "deadline",
+        "emergency",
     }
 
     def classify(
@@ -45,24 +85,36 @@ class MessageClassifier:
 
         text = (
             context.message.message_text or ""
-        ).lower()
+        ).strip().lower()
 
-        if any(word in text for word in self.PHISHING_WORDS):
-            return "PHISHING"
+        if not text:
+            return "unknown"
 
-        if any(word in text for word in self.TRANSACTION_WORDS):
-            return "TRANSACTION"
+        if context.message.forwarded_count > 0:
+            return "forward"
+
+        if any(word in text for word in self.SCAM_WORDS):
+            return "scam"
+
+        if any(word in text for word in self.SPAM_WORDS):
+            return "spam"
 
         if any(word in text for word in self.PROMOTION_WORDS):
-            return "PROMOTION"
+            return "promotion"
 
-        if any(word in text for word in self.REMINDER_WORDS):
-            return "REMINDER"
+        if any(word in text for word in self.PAYMENT_WORDS):
+            return "payment"
 
-        if context.message.business_id:
-            return "BUSINESS"
+        if any(word in text for word in self.EVENT_WORDS):
+            return "event"
 
-        if context.message.group_id:
-            return "GROUP"
+        if any(word in text for word in self.GREETING_WORDS):
+            return "greeting"
 
-        return "PERSONAL"
+        if context.message.business_id or context.message.is_business_message():
+            return "business_update"
+
+        if any(word in text for word in self.URGENT_WORDS):
+            return "urgent"
+
+        return "personal"

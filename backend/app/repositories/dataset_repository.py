@@ -2,6 +2,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from app.config.settings import settings
 from app.mappers.message_mapper import MessageMapper
 from app.mappers.user_mapper import UserMapper
 from app.mappers.message_event_mapper import MessageEventMapper
@@ -13,8 +14,14 @@ class DatasetRepository:
     """
 
     def __init__(self):
-        # Temporary path (change later to settings.DATASET_PATH)
-        self.dataset_path = Path(r"C:\Users\vinu\Downloads")
+        dataset_path = Path(settings.DATASET_PATH)
+
+        if not dataset_path.is_absolute():
+            dataset_path = (
+                Path(__file__).resolve().parents[2] / dataset_path
+            )
+
+        self.dataset_path = dataset_path
 
         self.messages = self._load("messages.csv")
         self.users = self._load("users.csv")
@@ -28,6 +35,9 @@ class DatasetRepository:
             raise FileNotFoundError(f"Dataset not found: {file_path}")
 
         return pd.read_csv(file_path)
+
+    def get_messages(self) -> pd.DataFrame:
+        return self.messages
 
     def get_message(self, message_id: str):
         result = self.messages[
@@ -50,8 +60,13 @@ class DatasetRepository:
         return UserMapper.from_series(result.iloc[0])
 
     def get_history(self, user_id: str):
-        return self.message_history[
+        rows = self.message_history[
             self.message_history["user_id"] == user_id
+        ]
+
+        return [
+            MessageMapper.from_series(row)
+            for _, row in rows.iterrows()
         ]
 
     def get_events(self, message_id: str):
