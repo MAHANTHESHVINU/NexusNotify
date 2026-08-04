@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { api } from "../api/api";
-import type { Predictions } from "../types/predictions";
+import type { Prediction } from "../types/prediction";
 
 export function usePredictions() {
 
-    const [predictions, setPredictions] = useState<Predictions[]>([]);
+    const [predictions, setPredictions] = useState<Prediction[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -26,7 +26,6 @@ export function usePredictions() {
             } catch (error) {
 
                 console.error("Prediction fetch failed:", error);
-
                 setPredictions([]);
 
             } finally {
